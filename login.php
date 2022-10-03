@@ -20,6 +20,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login page</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
     <form action="./login.php" method="post">

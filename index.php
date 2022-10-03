@@ -10,5 +10,8 @@
     <p>
         <a href="./login.php">Login page</a>
     </p>
+    <p>
+        <a href="./student.php">Student rank page</a>
+    </p>
 </body>
 </html>

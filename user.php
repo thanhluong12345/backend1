@@ -29,11 +29,11 @@ class User {
     }
 }
 
-class Student {
+class Student extends User {
     public $gpa;
-    public function __construct( $gpa ) {
+    public function __construct( $username, $password, $firstname, $lastname, $gpa ) {
         $this->gpa = $gpa;
-        parent::__construct();
+        parent::__construct($username, $password, $firstname, $lastname);
     }
 
     public function rank() {
