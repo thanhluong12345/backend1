@@ -1,0 +1,61 @@
+<?php
+    session_start();
+    if( isset( $_SESSION["username"] ) && isset( $_SESSION["password"] ) ) {
+        header( "Location: ./admin.php" );
+    }
+
+    require_once "user.php";
+    $username = "";
+    $password = "";
+    $login_check = false;
+
+    if( isset($_POST["username"]) && isset($_POST["password"]) ) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        
+        $user_one = new User("admin", "12345", "Nguyen", "Luong");
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $login_check = $user_one->login($username, $password_hash);
+
+        if( $login_check ) {
+            $_SESSION["username"] = $username;
+            $_SESSION["password"] = $password;
+            header( "Location: ./admin.php" );
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form action="./login.php" method="post">
+        <h1> Form login </h1>
+        <p>
+            username test: admin <br>
+            password test: 12345
+        </p>
+        <br>
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="Enter username">
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter password">
+        </p>
+        <p>
+            <input type="submit" value="Login">
+        </p>
+    </form>
+</body>
+</html>
