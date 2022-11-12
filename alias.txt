@@ -1,0 +1,9 @@
+Alias /demo "D://backend1/"
+ 
+    <Directory "D://backend1">
+        Options Indexes FollowSymLinks MultiViews ExecCGI
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+        Require all granted
+    </Directory>
